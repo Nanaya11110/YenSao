@@ -1,4 +1,4 @@
-<footer class="bg-gray-900">
+<footer class="bg-green-900">
     <div class="mx-auto max-w-7xl py-8 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
         <nav class="-mx-5 -my-2 flex flex-wrap justify-center order-2" aria-label="Footer">
             <div class="px-5">

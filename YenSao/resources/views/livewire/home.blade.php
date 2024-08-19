@@ -1,47 +1,43 @@
+<div>
+<!--PRODUCT-->
 <div class="py-20">
     <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-gray-800 mb-8">Featured products</h2>
+        <h2 class="text-3xl font-bold text-center text-green-900 mb-8">Sản phẩm nổi bật</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             @foreach ($products as $product )
             <a href="{{route('ProductDetail',['id'=>$product->id])}}" class=" rounded-lg bg-slate-300 hover:-translate-y-2 duration-500 shadow-md overflow-hidden">
-                <img src="{{$product->image}}" alt="Coffee"
-                    class="w-full h-64 object-cover">
+                <img src="{{$product->image}}" alt="{{$product->name}}"
+                    class="w-full h-96 object-fill">
                 <div class="p-6">
                     <h3 class="text-xl font-bold text-gray-800 mb-2">{{$product->name}}</h3>
-                    <p class="text-gray-700 text-base">{{$product->description}}.</p>
+                    <p class="text-gray-700 text-base">Khối lượng: {{$product->weight}}ml</p>
                     <div class="mt-4 flex items-center justify-between">
                         <span class="text-gray-700 font-medium">{{$product->price}}$</span>
-                        <button
-                            class="px-4 py-2 bg-blue-600 text-white font-bold rounded-full hover:bg-blue-700 transition duration-200">Add
-                            to cart</button>
-                    </div>
+                     </div>
                 </div>
             </a>
             @endforeach
-            
         </div>
     </div>
-    <div class="container mx-auto px-4 mt-5 ">
-        <h2 class="text-3xl font-bold text-gray-800 mb-8">Find by Category</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-           
-            @foreach ($products as $product )
-            <div class="bg-slate-300 hover:-translate-y-2 duration-500 rounded-lg shadow-md overflow-hidden">
-                <img src="{{$product->image}}" alt="Coffee"
-                    class="w-full h-64 object-cover">
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">{{$product->name}}</h3>
-                    <p class="text-gray-700 text-base">{{$product->description}}.</p>
-                    <div class="mt-4 flex items-center justify-between">
-                        <span class="text-gray-700 font-medium">{{$product->price}}$</span>
-                        <button
-                            class="px-4 py-2 bg-blue-600 text-white font-bold rounded-full hover:bg-blue-700 transition duration-200">Add
-                            to cart</button>
-                    </div>
+  
+</div>
+
+<!-- Features -->
+<section class="bg-gray-100 py-8 mt-10 ">
+    <div class=" w-32 h-10 text-white font-bold text-xl text-center mx-auto pt-1 bg-green-500">Tin tức</div>
+    <div class="container mx-auto text-center px-4">
+        <div class="flex flex-wrap -mx-4">
+            @foreach ($post as $post )
+            <a href="{{route('PostDetail',['id'=>$post->id])}}" class="w-full md:w-1/4 px-4 mb-8 ">
+                <div class="bg-white p-8 shadow-md rounded-md">
+                    <img src="{{$post->url}}">
+                    <h3 class="text-xl font-bold text-green-500 mb-2">{{$post->title}}</h3>
+                    <p class="text-gray-600 text-left">{{ \Illuminate\Support\Str::limit($post->content, 100) }}
+                    </p>
                 </div>
-            </div>
+            </a>
             @endforeach
-            
         </div>
     </div>
+</section>
 </div>

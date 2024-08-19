@@ -1,12 +1,15 @@
-<head>
-    @include('layout.header')
-    @include('layout.navBar')
-    @livewireStyles
-</head>
-<body class="bg-gray-800">
-    {{ $slot }}
- 
-    @livewireScripts
-</body>
 
-@include('layout.footer')
+<!DOCTYPE html>
+<html>
+    <head>
+        @include('layout.header')
+        @include('layout.navBar')
+        @livewireStyles
+    </head>
+    <body>
+        {{ $slot }}
+        @livewireScripts
+    @include('layout.footer')
+    </body>
+</html>
+
