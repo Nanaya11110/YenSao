@@ -1,10 +1,17 @@
 
 <nav class="bg-white border-gray-200 ">
+    @auth
     <div class="hidden">
         {{
-            $CartQuantity = App\Models\Cart::where('user_id',auth()->user()->id)->count()
+            $CartItem = App\Models\Cart::where('user_id',auth()->user()->id)->get()
         }}
+        {{$Quantity = 0}}
+        @foreach ($CartItem as $Item )
+            {{$Quantity += $Item->quantity}} 
+        @endforeach
         </div>
+    @endauth
+ 
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <!--LOGO-->
         <a href="{{ route('Home') }}" class="flex items-center space-x-3 rtl:space-x-reverse ">
@@ -13,12 +20,13 @@
         </a>
         <!--USER SIDE-->
         @if (Auth::check())
-            <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-                <a class="mx-5" href="{{ route('Cart') }}"><i class="fa-solid fa-cart-shopping"
-                        style="color: rgb(0, 100, 0)"></i><span class=" font-bold text-green-800">({{$CartQuantity}})</span></a>
-                <a class="" href="{{ route('Logout') }}"><img class="w-10 h-10 object-cover rounded-full"
-                        src="{{ asset('Mizu_blue.png') }}" alt="user photo"></a>
+            <div class="flex  items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+                <a class=" font-bold text-green-600" href="{{route('Logout')}}">Log Out</a>
 
+                <a class="px-3" href="{{ route('Cart') }}"><i class="fa-solid fa-cart-shopping"
+                        style="color: rgb(0, 100, 0)"></i><span class=" font-bold text-green-800">({{$Quantity}})</span></a>
+                <a class="" href="{{route('Profile',['id'=>auth()->user()->id])}}"><img class="w-10 h-10 object-cover rounded-full"
+                        src="{{asset(auth()->user()->avatar_url)}}" alt="user photo"></a>
             </div>
         @else
             <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
@@ -32,24 +40,30 @@
                 <li>
                     <a href="{{ route('Home') }}"
                         class="block py-2 px-3 rounded md:bg-transparent  md:p-0 "
-                        aria-current="page">Home</a>
+                        aria-current="page">Trang chủ</a>
                 </li>
                 <li>
                     <a href="{{ route('AboutUs') }}"
-                        class="block py-2 px-3  rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0  md:dark:hover:text-blue-500 dark:hover:bg-gray-700 md:dark:hover:bg-transparent ">
-                        About</a>
+                        class="block py-2 px-3  rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0  md:dark:hover:text-blue-500 dark:hover:bg-gray-700 md:dark:hover:bg-transparent ">Giới thiệu</a>
                 </li>
                 <li>
                     <a href="{{ route('AllProduct') }}"
-                        class="block py-2 px-3  rounded  md:p-0  md:dark:hover:text-blue-500 dark:hover:bg-gray-700 md:dark:hover:bg-transparent ">
-                        Product</a>
+                        class="block py-2 px-3  rounded  md:p-0  md:dark:hover:text-blue-500 dark:hover:bg-gray-700 md:dark:hover:bg-transparent ">Sản phẩm</a>
                 </li>
-
                 <li>
                     <a href="{{ route('Contact') }}"
-                        class="block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 s md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
-                        Contact</a>
+                        class="block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 s md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Liên hệ</a>
                 </li>
+                @auth
+                @if (auth()->user()->role == 'admin')
+                <li>
+                    <a href="{{ route('AdminHomePage') }}"
+                        class="block py-2 px-3 text-green-900 rounded md:bg-transparent  md:p-0 "
+                        aria-current="page">Admin</a>
+                </li>    
+                @endif
+                @endauth
+                
             </ul>
         </div>
     </div>

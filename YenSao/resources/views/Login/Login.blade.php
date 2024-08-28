@@ -10,9 +10,9 @@
     <div class="min-h-screen flex items-center justify-center">
         <div class="max-w-md w-full p-6 bg-white rounded-lg shadow-lg">
             <div class="flex justify-center mb-8">
-                <img src="Messenger.png" alt="Logo" class="w-30 h-20">
+                <img src="{{asset("HomePage/DT-Logo.png")}}" alt="Logo" class="w-30 h-20">
             </div>
-            <h1 class="text-2xl font-semibold text-center text-gray-500 mt-8 mb-6">Messenger</h1>
+            <h1 class="text-2xl font-semibold text-center text-gray-500 mt-8 mb-6">DT Vietnam</h1>
             @csrf
             <form action="{{route('Auth')}}" method="POST">
                 @csrf
@@ -30,7 +30,7 @@
                     <!--<a href="#" class="block text-right text-xs text-cyan-600 mt-2"> Forgot Password?</a>-->
                 </div>
                 <button type="submit"
-                    class="w-32 bg-gradient-to-r from-cyan-400 to-cyan-600 text-black py-2 rounded-lg mx-auto block focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 mt-4 mb-6">Log
+                    class="w-32 bg-gradient-to-r from-green-400 to-green-600 text-black py-2 rounded-lg mx-auto block focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 mt-4 mb-6">Log
                     in</button>
             </form>
             <div class="text-center">

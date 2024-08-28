@@ -32,6 +32,7 @@ class LoginController extends Controller
         if (Auth::attempt($validator))
         {
             // Authentication passed...
+            if (auth()->user()->role == 'admin') return redirect()->route('AdminHomePage');
             return redirect()->route('Home');
             
             

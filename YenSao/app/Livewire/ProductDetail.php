@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\Cart;
 use App\Models\product;
 use Illuminate\Log\Logger;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class ProductDetail extends Component
@@ -20,7 +21,8 @@ class ProductDetail extends Component
    
     public function AddToCart()
     {
-       $CartItem = Cart::where('user_id',auth()->user()->id)
+        if (!auth()->user()) return redirect()->route('Login');
+        $CartItem = Cart::where('user_id',auth()->user()->id)
                         ->where('product_id',$this->product->id)
                         ->first();
        $item = new Cart();
@@ -37,10 +39,11 @@ class ProductDetail extends Component
         $item->quantity = 1;
         $item->price = $this->product->price;
         $item->save();
-       }
-       
+       };
+       $this->dispatch('flashMessage');
     }
 
+    
     public function CheckOut()
     {
         return redirect()->route('CheckOut');

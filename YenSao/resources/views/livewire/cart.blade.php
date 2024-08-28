@@ -1,3 +1,5 @@
+@section('title','Giỏ hàng')
+
 <div class="container mx-auto mt-10">
     <div class="sm:flex shadow-md my-10">
         <div class="  w-full  sm:w-3/4  px-10 py-10">
@@ -30,8 +32,10 @@
                     </div>
                 </div>
             </div>
+            <div class=" hidden">
             {{$TotalPrice += $Item->quantity * $Item->product->price}}
-            @endforeach
+            </div>
+        @endforeach
             
 
           

@@ -1,3 +1,4 @@
+@section('title','Giới thiệu')
 <div>
     <div class="sm:flex items-center max-w-screen-xl">
         <div class="sm:w-1/2 p-10">

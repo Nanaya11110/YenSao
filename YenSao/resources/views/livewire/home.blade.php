@@ -22,9 +22,9 @@
   
 </div>
 
-<!-- Features -->
+<!-- POST -->
 <section class="bg-gray-100 py-8 mt-10 ">
-    <div class=" w-32 h-10 text-white font-bold text-xl text-center mx-auto pt-1 bg-green-500">Tin tức</div>
+    <div class=" w-32 my-2 h-10 text-white font-bold text-xl text-center mx-auto pt-1 bg-green-500">Tin tức</div>
     <div class="container mx-auto text-center px-4">
         <div class="flex flex-wrap -mx-4">
             @foreach ($post as $post )

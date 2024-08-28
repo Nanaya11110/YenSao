@@ -3,7 +3,7 @@
 <div class="flex h-screen">
     <!-- Left Pane -->
     <div class="hidden lg:flex items-center justify-center flex-1 bg-white text-black">
-        <img src="Messenger.png" class="w-1/2 h-1/2 object-cover">
+        <img src="{{asset('HomePage/DT-Logo.png')}}" class="w-1/2 h-1/2 object-cover">
     </div>
     <!-- Right Pane -->
     <div class="w-full bg-gray-100 lg:w-1/2 flex items-center justify-center">

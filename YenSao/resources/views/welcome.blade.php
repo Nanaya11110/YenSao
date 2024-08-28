@@ -6,7 +6,7 @@
 @include('layout.feature')
 @include('layout.introduct')
 @livewire('home')
-
+@include('layout.SecondBanner')
 
 
 @include('layout.footer')
