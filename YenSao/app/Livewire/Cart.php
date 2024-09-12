@@ -4,6 +4,8 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Cart as CartItem;
+use Livewire\Attributes\On;
+
 class Cart extends Component
 {
     public $CartItem;
@@ -13,7 +15,6 @@ class Cart extends Component
         
         $cartItem->delete();
     }
-
     public function DecItem(CartItem $cartItem)
     {
             $cartItem->quantity -=1;

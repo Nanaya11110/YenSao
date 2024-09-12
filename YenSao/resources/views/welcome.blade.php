@@ -1,7 +1,7 @@
 @section('title','DTVietNam')
 
 @include('layout.header')
-@include('layout.navBar')
+@livewire('nav-bar')
 @include('layout.banner')
 @include('layout.feature')
 @include('layout.introduct')

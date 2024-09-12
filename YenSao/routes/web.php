@@ -6,9 +6,11 @@ use App\Livewire\AboutUs;
 use App\Livewire\AddProduct;
 use App\Livewire\AddUserFromAdmin;
 use App\Livewire\AdminHomePage;
+use App\Livewire\AllProdcutAdminPage;
 use App\Livewire\AllProduct;
 use App\Livewire\AllUserAdminHomePage;
 use App\Livewire\Cart;
+use App\Livewire\Chart;
 use App\Livewire\CheckOut;
 use App\Livewire\Contact;
 use App\Livewire\PostDetail;
@@ -36,9 +38,10 @@ Route::get('/AddProduct',AddProduct::class)->name('AddProduct');
 Route::get('/UpdateProduct/{id}',UpdateProduct::class)->name('UpdateProduct');
 
 Route::get('/AllUserAdminPage',AllUserAdminHomePage::class)->name('AllUserAdminPage');
+Route::get('/AllProductAdminPages',AllProdcutAdminPage::class)->name('AllProductAdminPages');
 Route::get('/UpdateUserAdminPage/{id}',UpdateUserFromAdmin::class)->name('UpdateUserFromAdmin');
 Route::get('/AddUserAdminPage',AddUserFromAdmin::class)->name('AddUserFromAdmin');
-
+Route::get('/ChartAdmin',Chart::class)->name('Chart');
 
 Route::controller(LoginController::class)->group(function()
 {

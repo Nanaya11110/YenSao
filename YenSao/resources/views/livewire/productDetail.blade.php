@@ -1,7 +1,7 @@
 @section('title', $product->name)
 <div class="font-sans  ">
     <!--FLASH MESSAGE-->
-    <div id="flash-message" class="fixed top-4 left-4 bg-green-500 text-white p-4 
+    <div wire:ignore id="flash-message" class=" z-10 fixed top-4 left-4 bg-green-500 text-white p-4 
     rounded shadow-lg hidden">
         <p class="font-bold">Thêm sản phẩm thành công</p>
         <p>Sản phẩm đã có trong giỏ hàng</p>
@@ -60,7 +60,7 @@
             setTimeout(() => {
                 flashMessage.classList.add('hidden');
                 console.log("HIDE: " + flashMessage.classList);
-            }, 5000);
+            }, 2000);
         });
         Livewire.on('flashMessage', (message) => {
            

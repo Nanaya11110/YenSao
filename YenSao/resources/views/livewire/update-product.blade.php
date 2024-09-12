@@ -2,11 +2,11 @@
     @include('layout.AdminSideBar')
      <!--FORM-->
      <div>
-         <div class="bg-gray-100">
+         <div class="bg-gray-800">
              <div class="container mx-auto py-8">
                  <div class="grid grid-cols-4 sm:grid-cols-12 gap-6 px-4">
                      <div class="col-span-4 sm:col-span-3">
-                         <div class="bg-white shadow rounded-lg p-6">
+                         <div class="bg-gray-700 shadow rounded-lg p-6">
                              <div class="flex flex-col items-center">
                                  @if ($image)
                                      <img src="{{ $image->temporaryUrl() }}"
@@ -34,16 +34,14 @@
                          </div>
                      </div>
                      <div class="col-span-4 sm:col-span-9">
-                         <div class="bg-white shadow rounded-lg p-6">
+                         <div class="bg-gray-700 shadow rounded-lg p-6 text-white">
                              <h2 class="text-xl font-bold mb-4">Cập nhật sản phẩm</h2>
-     
                              <p class="text-gray-700"></p>
-     
                              <!--NAME = GMAIl-->
                              <div class="mb-6">
                                  <label for="gmail" class="block mb-2 text-sm font-medium">Tên Sản phẩm</label>
                                  <input placeholder="{{$product->name}}" type="text" id="gmail" name="gmail" wire:model.live="gmail"
-                                     class="bg-green-50 border  text-sm rounded-lg  block w-full p-2.5">
+                                     class="bg-gray-600 border  text-sm rounded-lg  block w-full p-2.5">
                              </div>
                              @error('gmail')
                                  <div class="bg-red-500 text-black">{{ $message }}</div>
@@ -54,7 +52,7 @@
                                  <label for="gmail" class="block mb-2 text-sm font-medium">Giá sản phẩm</label>
                                  <input type="text" id="name" name="name" wire:model.live="name"
                                      placeholder="{{$product->price}}"
-                                     class="bg-green-50 border  text-sm rounded-lg  block w-full p-2.5">
+                                     class="bg-gray-600 border  text-sm rounded-lg  block w-full p-2.5">
                              </div>
                              @error('name')
                                  <div class="bg-red-500 text-black">{{ $message }}</div>
@@ -64,7 +62,7 @@
                              <div class="mb-6">
                                  <label for="password" class="block mb-2 text-sm font-medium">Mô tả</label>
                                  <textarea placeholder="{{$product->description}}"  id="password" name="password" wire:model.live="password"
-                                     class="bg-green-50 border min-h-52 text-sm rounded-lg  block w-full p-2.5"></textarea>
+                                     class="bg-gray-600 border min-h-52 text-sm rounded-lg  block w-full p-2.5"></textarea>
                              </div>
                              @error('password')
                                  <div class="bg-red-500 text-black">{{ $message }}</div>

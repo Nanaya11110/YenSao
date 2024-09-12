@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>My Mail</title>
-</head>
+
 <body>
-   <h1>DASDASdADASDSADSADS</h1>
+   <h1>{{$data['title']}}</h1>
+   <h1>From: {{$data['email']}}</h1>
+   <p>{{$data['content']}}</p>
 </body>
 </html>

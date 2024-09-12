@@ -33,15 +33,14 @@
                 </div>
                 <div class="col-span-4 sm:col-span-9">
                     <div class="bg-white shadow rounded-lg p-6">
-                        <h2 class="text-xl font-bold mb-4">My account</h2>
+                        <h2 class="text-xl font-bold mb-4">Tài khoản của tôi</h2>
 
                         <p class="text-gray-700"></p>
 
                         <!--GMAIL-->
                         <div class="mb-6">
-                            <label for="gmail" class="block mb-2 text-sm font-medium">Your
-                                name</label>
-                            <input type="text" id="gmail" name="gmail" wire:model.live="gmail"
+                            <label for="gmail" class="block mb-2 text-sm font-medium">Gmail</label>
+                            <input type="text" id="gmail" name="gmail" wire:model.live="gmail" value="{{$gmail}}"
                                 class="bg-green-50 border  text-sm rounded-lg  block w-full p-2.5">
                         </div>
                         @error('gmail')
@@ -50,9 +49,8 @@
 
                         <!--NAME-->
                         <div class="mb-6">
-                            <label for="gmail" class="block mb-2 text-sm font-medium">Your
-                                name</label>
-                            <input type="text" id="name" name="name" wire:model.live="name"
+                            <label for="gmail" class="block mb-2 text-sm font-medium">Tên của bạn</label>
+                            <input type="text" id="name" name="name" wire:model.live="name" value="{{$name}}"
                                 value="{{ auth()->user()->name }}"
                                 class="bg-green-50 border  text-sm rounded-lg  block w-full p-2.5">
                         </div>
@@ -62,7 +60,7 @@
 
                         <!--PASSWORD-->
                         <div class="mb-6">
-                            <label for="password" class="block mb-2 text-sm font-medium">Password</label>
+                            <label for="password" class="block mb-2 text-sm font-medium">Mật khẩu</label>
                             <input type="password" id="password" name="password" wire:model.live="password"
                                 class="bg-green-50 border  text-sm rounded-lg  block w-full p-2.5"
                                 placeholder="Your Password">

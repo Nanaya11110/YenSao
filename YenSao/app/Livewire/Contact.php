@@ -5,7 +5,7 @@ namespace App\Livewire;
 use App\Mail\FirstMail;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
-
+use Illuminate\Support\Facades\Log;
 class Contact extends Component
 {
 
@@ -14,10 +14,11 @@ class Contact extends Component
     public $email;
     public function SendEmail()
     {
-       $data['name'] = $this->name;
+       $data['title'] = $this->name;
        $data['content'] = $this->content;
        $data['email'] = $this->email;
-       Mail::to('hieupront4560@gmail.com')->send(new FirstMail($data));
+       Mail::to(users: 'hieupront4560@gmail.com')->send(new FirstMail($data));
+       $this->reset();
     }
     public function render()
     {

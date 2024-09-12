@@ -22,6 +22,13 @@ class Profile extends Component
     
   #[Validate('image')]	
     public $image;
+
+    public function mount()
+    {
+        $this->name = auth()->user()->name;
+        $this->gmail = auth()->user()->email;
+        $this->password = auth()->user()->note;
+    }
     public function update()
     {
         $validator= $this->validate();

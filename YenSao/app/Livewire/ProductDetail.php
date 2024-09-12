@@ -40,7 +40,7 @@ class ProductDetail extends Component
         $item->price = $this->product->price;
         $item->save();
        };
-       $this->dispatch('flashMessage');
+       $this->dispatch('AddToCart');
     }
 
     

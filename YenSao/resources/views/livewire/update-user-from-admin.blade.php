@@ -1,10 +1,10 @@
 <div>
     @include('layout.AdminSideBar')
-    <div class="bg-gray-100">
+    <div class="bg-gray-800">
         <div class="container mx-auto py-8">
             <div class="grid grid-cols-4 sm:grid-cols-12 gap-6 px-4">
                 <div class="col-span-4 sm:col-span-3">
-                    <div class="bg-white shadow rounded-lg p-6">
+                    <div class="bg-gray-600 shadow rounded-lg p-6">
                         <div class="flex flex-col items-center">
                             @if ($image)
                                 <img src="{{ $image->temporaryUrl() }}"
@@ -32,20 +32,20 @@
                     </div>
                 </div>
                 <div class="col-span-4 sm:col-span-9">
-                    <div class="bg-white shadow rounded-lg p-6">
+                    <div class="bg-gray-700 shadow rounded-lg p-6 text-white">
                         <h2 class="text-xl font-bold mb-4">User account</h2>
                         <p class="text-gray-700"></p>
                         <!--NAME-->
                         <div class="mb-6">
                             <label for="name" class="block mb-2 text-sm font-medium"> name</label>
                             <input type="text" id="name" name="name" wire:model.live="name"
-                                class="bg-green-50 border  text-sm rounded-lg  block w-full p-2.5">
+                                class="bg-gray-600 border  text-sm rounded-lg  block w-full p-2.5">
                         </div>
                         @error('name')
                             <div class="bg-red-500 text-black">{{ $message }}</div>
                         @enderror
                         <!--ROLE-->
-                        <select wire:model.live ='role' class=" my-5 block w-1/2 px-5 bg-gray-500 border border-gray-900 rounded-lg shadow-sm  sm:text-sm">
+                        <select wire:model.live ='role' class=" my-5 block w-40 h-10 px-5 bg-gray-500 border border-gray-900 rounded-lg shadow-sm  sm:text-sm">
                             <option value="User">User</option>
                             <option value="Admin">Admin</option>
                         </select>
@@ -57,7 +57,7 @@
                             <label for="gmail" class="block mb-2 text-sm font-medium">Email</label>
                             <input type="text" id="name" name="gmail" wire:model.live="gmail"
                                
-                                class="bg-green-50 border  text-sm rounded-lg  block w-full p-2.5">
+                                class="bg-gray-600 border  text-sm rounded-lg  block w-full p-2.5">
                         </div>
                         @error('gmail')
                             <div class="bg-red-500 text-black">{{ $message }}</div>
@@ -67,7 +67,7 @@
                         <div class="mb-6">
                             <label for="password" class="block mb-2 text-sm font-medium">Password</label>
                             <input type="password" id="password" name="password" wire:model.live="password"
-                                class="bg-green-50 border  text-sm rounded-lg  block w-full p-2.5"
+                                class="bg-gray-600 border  text-sm rounded-lg  block w-full p-2.5"
                                 placeholder="Your Password">
                         </div>
                         @error('password')

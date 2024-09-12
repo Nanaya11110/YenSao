@@ -3,7 +3,7 @@
 <html>
     <head>
         @include('layout.header')
-        @include('layout.navBar')
+        @livewire('nav-bar')
         @livewireStyles
     </head>
     <body>

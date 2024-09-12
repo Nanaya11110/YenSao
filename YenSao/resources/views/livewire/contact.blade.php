@@ -1,4 +1,4 @@
-@section('title','Liên hệ')
+@section('title','Liên hệ   ')
 <section class="text-gray-600 body-font relative">
     <div class="container px-5 py-24 mx-auto flex sm:flex-nowrap flex-wrap">
         <div
@@ -24,7 +24,7 @@
             <p class="leading-relaxed mb-5 text-gray-600">Gửi thông tin liên lạc cho chúng tôi
             </p>
             <div class="relative mb-4">
-                <label for="name" class="leading-7 text-sm text-gray-600">Tên</label>
+                <label for="name" class="leading-7 text-sm text-gray-600">Tiêu đề</label>
                 <input wire:model.live='name' type="text" id="name" name="name"
                     class="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
             </div>

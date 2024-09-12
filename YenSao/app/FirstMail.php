@@ -21,7 +21,6 @@ class FirstMail extends Mailable
     public function __construct($MailData)
     {
         $this->MailData = $MailData;
-        //dd($MailData);
     }
 
     /**
@@ -32,7 +31,7 @@ class FirstMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'First Mail',
+            subject: 'TEST suBJECT',
         );
     }
 

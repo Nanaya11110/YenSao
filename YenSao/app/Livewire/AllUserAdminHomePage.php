@@ -4,10 +4,11 @@ namespace App\Livewire;
 
 use App\Models\User;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class AllUserAdminHomePage extends Component
 {
-    public $AllUser;
+    use WithPagination;
     public $search;
 
     public function AddUser()
@@ -25,9 +26,10 @@ class AllUserAdminHomePage extends Component
     }
     public function render()
     {
-        $this->AllUser = User::where('id','<>',auth()->user()->id)
-                                ->where('name','like','%'.$this->search.'%')
-                                ->get(); 
-        return view('livewire.all-user-admin-home-page');
+   
+        $AllUser = User::where('id','<>',auth()->user()->id)
+        ->where('name','like','%'.$this->search.'%')
+        ->simplePaginate(5); 
+        return view('livewire.all-user-admin-home-page',['AllUser'=>$AllUser]);
     }
 }
