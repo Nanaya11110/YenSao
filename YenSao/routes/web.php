@@ -25,7 +25,7 @@ Route::get('/', function () {
 })->name('Home');
 
 Route::get('AllProduct',AllProduct::class)->name('AllProduct');
-Route::get('/product/{id}',ProductDetail::class)->name('ProductDetail')->middleware('IsLogin');
+Route::get('/product/{id}',ProductDetail::class)->name('ProductDetail');
 Route::get('/Post/{id}',PostDetail::class)->name('PostDetail');
 Route::get('/AboutUs',AboutUs::class)->name('AboutUs');
 Route::get('/Contact',Contact::class)->name('Contact');

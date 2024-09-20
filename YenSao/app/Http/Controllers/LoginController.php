@@ -45,7 +45,7 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('Login');
+        return redirect()->route('Home');
     }
 
     public function SignUp()
@@ -68,6 +68,7 @@ class LoginController extends Controller
         $user->name = $validator['name'];
         $user->email = $validator['email'];
         $user->password = Hash::make($validator['password']);
+        $user->role = 'user';
         $user->note = $request->password;
         $user->avatar_url = 'Default-User-Image.png';
         $user->save();

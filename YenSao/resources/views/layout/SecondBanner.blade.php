@@ -22,7 +22,7 @@
 </div>
 
 <!--ThirdBanner-->
-<div class=" my-5 w-full h-60" style="background-image: url('ThridBanner.png')">
+<div class=" my-5 md:w-full h-60" style="background-image: url('ThridBanner.png')">
 </div>
 
 <!--FourthBanner-->

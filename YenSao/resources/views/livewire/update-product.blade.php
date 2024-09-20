@@ -34,7 +34,7 @@
                          </div>
                      </div>
                      <div class="col-span-4 sm:col-span-9">
-                         <div class="bg-gray-700 shadow rounded-lg p-6 text-white">
+                         <div class="bg-gray-700 shadow rounded-lg p-3 text-white">
                              <h2 class="text-xl font-bold mb-4">Cập nhật sản phẩm</h2>
                              <p class="text-gray-700"></p>
                              <!--NAME = GMAIl-->
@@ -57,6 +57,56 @@
                              @error('name')
                                  <div class="bg-red-500 text-black">{{ $message }}</div>
                              @enderror
+
+
+
+                            <!--WEIGHT-->
+                            <div class=" flex gap-5">
+                                <!--WEIGHT-->
+                                <div class="mb-6">
+                                    <label for="weight" class="block  text-white mb-2 text-sm font-medium">Khối lượng</label>
+                                    <input type="text" id="weight" name="weight" wire:model.live="weight" placeholder="{{$product->weight}}" 
+                                    class="bg-gray-600 border  text-sm rounded-lg  block w-52 p-2.5">
+                                    @error('weight')
+                                    <div class="bg-red-500 text-black">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+
+                                <!--ORIGIN-->
+                                <div class="mb-6">
+                                    <label for="origin" class="block text-white mb-2 text-sm font-medium">Xuất sứ</label>
+                                    <input type="text" id="origin" name="origin" wire:model.live="origin" placeholder="{{$product->origin}}"
+                                    class="bg-gray-600 border  text-sm rounded-lg  block w-52 p-2.5">
+                                    @error('origin')
+                                    <div class="bg-red-500 text-black">{{ $message }}</div>
+                                @enderror
+                                </div>
+
+
+                                <!--Packaging-->
+                                <div class="mb-6">
+                                    <label for="pack" class="block text-white mb-2 text-sm font-medium">Quy cách</label>
+                                    <input type="pack" id="pack" name="pack" wire:model.live="pack" placeholder="{{$product->packaging}}" 
+                                    class="bg-gray-600 border  text-sm rounded-lg  block w-52 p-2.5">
+                                    @error('pack')
+                                    <div class="bg-red-500 text-black">{{ $message }}</div>
+                                @enderror
+                                </div>
+                                
+
+                                <!--EXPIRE DATE-->
+                                <div class="mb-6">
+                                    <label for="expdate" class="block text-white mb-2 text-sm font-medium">Hạn sử dụng</label>
+                                    <input type="datetime-local" id="expdate" name="expdate" wire:model.live="expdate" 
+                                    class="bg-gray-600 border  text-sm rounded-lg  block w-52 p-2.5">
+                                    @error('expdate')
+                                    <div class="bg-red-500 text-black">{{ $message }}</div>
+                                @enderror
+                                </div>
+                               
+                            </div>
+
      
                              <!--PASSWORD = DESCRIPTION-->
                              <div class="mb-6">

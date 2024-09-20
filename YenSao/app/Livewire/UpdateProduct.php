@@ -22,9 +22,30 @@ class UpdateProduct extends Component
 
     #[Validate('image')]
     public $image;
+
+    #[Validate('required | date | after:today')]
+    public $expdate; //THIS IS NAME
+    
+    #[Validate('required')]
+    public $pack; //THIS IS NAME
+    
+    #[Validate('required')]
+    public $weight; //THIS IS NAME
+    
+    #[Validate('required')]
+    public $origin; 
+
+
     public function mount($id)
     {
       $this->product = product::find($id);
+      $this->password = $this->product->description;
+      $this->gmail = $this->product->name;
+      $this->name = $this->product->price;
+      $this->weight = $this->product->weight;
+      $this->pack = $this->product->packaging;
+      $this->origin = $this->product->origin;
+      $this->expdate = $this->product->expirationdate;
     }
 
     public function Update()

@@ -19,6 +19,7 @@ class Contact extends Component
        $data['email'] = $this->email;
        Mail::to(users: 'hieupront4560@gmail.com')->send(new FirstMail($data));
        $this->reset();
+       $this->dispatch('SendEmail');
     }
     public function render()
     {

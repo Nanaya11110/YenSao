@@ -1,5 +1,5 @@
 <div class="">
-   @include('layout.AdminSideBar')
+    @include('layout.AdminSideBar')
     <!--FORM-->
     <div>
         <div class="bg-gray-800">
@@ -15,7 +15,7 @@
                                     <img src="" id='preview_img'
                                         class="w-32 h-32 bg-gray-300 rounded-full object-cover mb-4 shrink-0">
                                 @endif
-    
+
                             </div>
                             <div class="flex items-center space-x-6 mb-5">
                                 <label class="block">
@@ -34,24 +34,24 @@
                         </div>
                     </div>
                     <div class="col-span-4 sm:col-span-9">
-                        <div class="bg-gray-700 shadow rounded-lg p-6">
+                        <div class="bg-gray-700 shadow w-full rounded-lg p-3">
                             <h2 class="text-xl font-bold mb-4 text-white">Thêm sản phẩm</h2>
-    
                             <p class="text-gray-700"></p>
-    
                             <!--NAME = GMAIl-->
                             <div class="mb-6">
-                                <label for="gmail" class="block text-white mb-2 text-sm font-medium">Tên Sản phẩm</label>
+                                <label for="gmail" class="block text-white mb-2 text-sm font-medium">Tên Sản
+                                    phẩm</label>
                                 <input type="text" id="gmail" name="gmail" wire:model.live="gmail"
                                     class="bg-green-50 border  text-sm rounded-lg  block w-full p-2.5">
                             </div>
                             @error('gmail')
                                 <div class="bg-red-500 text-black">{{ $message }}</div>
                             @enderror
-    
+
                             <!--PRICE = NAME-->
                             <div class="mb-6">
-                                <label for="gmail" class="block text-white mb-2 text-sm font-medium">Giá sản phẩm</label>
+                                <label for="gmail" class="block text-white mb-2 text-sm font-medium">Giá sản
+                                    phẩm</label>
                                 <input type="text" id="name" name="name" wire:model.live="name"
                                     value="{{ auth()->user()->name }}"
                                     class="bg-green-50 border  text-sm rounded-lg  block w-full p-2.5">
@@ -59,8 +59,54 @@
                             @error('name')
                                 <div class="bg-red-500 text-black">{{ $message }}</div>
                             @enderror
-    
-                            <!--PASSWORD-->
+
+
+                            <!--WEIGHT-->
+                            <div class=" flex gap-5">
+                                <!--WEIGHT-->
+                                <div class="mb-6">
+                                    <label for="weight" class="block text-white mb-2 text-sm font-medium">Khối lượng</label>
+                                    <input type="text" id="weight" name="weight" wire:model.live="weight" class="bg-green-50 border  text-sm rounded-lg  block w-52 p-2.5">
+                                    @error('weight')
+                                    <div class="bg-red-500 text-black">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+
+                                <!--ORIGIN-->
+                                <div class="mb-6">
+                                    <label for="origin" class="block text-white mb-2 text-sm font-medium">Xuất sứ</label>
+                                    <input type="text" id="origin" name="origin" wire:model.live="origin" class="bg-green-50 border  text-sm rounded-lg  block w-52 p-2.5">
+                                    @error('origin')
+                                    <div class="bg-red-500 text-black">{{ $message }}</div>
+                                @enderror
+                                </div>
+
+
+                                <!--Packaging-->
+                                <div class="mb-6">
+                                    <label for="pack" class="block text-white mb-2 text-sm font-medium">Quy cách</label>
+                                    <input type="pack" id="pack" name="pack" wire:model.live="pack" class="bg-green-50 border  text-sm rounded-lg  block w-52 p-2.5">
+                                    @error('pack')
+                                    <div class="bg-red-500 text-black">{{ $message }}</div>
+                                @enderror
+                                </div>
+                                
+
+                                <!--EXPIRE DATE-->
+                                <div class="mb-6">
+                                    <label for="expdate" class="block text-white mb-2 text-sm font-medium">Hạn sử dụng</label>
+                                    <input type="datetime-local" id="expdate" name="expdate" wire:model.live="expdate" class="bg-green-50 border  text-sm rounded-lg  block w-52 p-2.5">
+                                    @error('expdate')
+                                    <div class="bg-red-500 text-black">{{ $message }}</div>
+                                @enderror
+                                </div>
+                               
+                            </div>
+                           
+
+
+                            <!--DESCRIPTION-->
                             <div class="mb-6">
                                 <label for="password" class="block text-white mb-2 text-sm font-medium">Mô tả</label>
                                 <textarea id="password" name="password" wire:model.live="password"
@@ -75,15 +121,15 @@
                                  focus:ring-gray-600 font-medium rounded-lg 
                                  text-sm px-5 py-2.5 me-2 mb-2 my-5
                                   focus:outline-none">Add</button>
-                           
-    
+
+
                         </div>
                         <span class=" font-semibold" wire:loading>Loading...</span>
-    
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+
 </div>

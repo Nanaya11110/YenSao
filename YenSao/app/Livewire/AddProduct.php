@@ -20,10 +20,23 @@ class AddProduct extends Component
 
     #[Validate('image')]
     public $image;
+    
+    #[Validate('required | date | after:today')]
+    public $expdate; //THIS IS NAME
+    
+    #[Validate('required')]
+    public $pack; //THIS IS NAME
+    
+    #[Validate('required')]
+    public $weight; //THIS IS NAME
+    
+    #[Validate('required')]
+    public $origin; 
 
     public function Add()
     {
         $validator= $this->validate();
+
         $description = $this->password;
         $name = $this->gmail;
         $price = $this->name;
@@ -31,8 +44,12 @@ class AddProduct extends Component
         $product->name = $name;
         $product->description = $description;
         $product->price = $price;
-        $validator['image'] = $this->image->store('storage/product','public');
-        $product->image = $validator['image'];
+        $product->weight = $this->weight;
+        $product->expirationdate = $this->expdate;
+        $product->packaging = $this->pack;
+        $product->origin = $this->origin;
+        $validator['image'] = $this->image->store('product','public');
+        $product->image = 'storage/'. $validator['image'];
         $product->category = 'Ni25';
         $product->save();
         //dd($user->avatar_url);

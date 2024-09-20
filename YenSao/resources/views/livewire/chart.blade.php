@@ -1,118 +1,132 @@
-<div class=" bg-gray-900">
-    <!--BUTTON-->
-    <div class=" absolute ml-20 mt-2">
-        <select id="chartype" class=" w-20 h-8 rounded-sm border border-gray-100 bg-gray-800 text-white font-bold">
-            <option value="bar">Bar</option>
-            <option value="line">Line</option>
-        </select>
-     
-        <button wire:click='productsUpdated' class="bg-yellow-500 w-20 mx-5">Update</button>
-    </div>
-    <div class="flex">
-        @include('layout.AdminSideBar')
-        <div class=" w-full h-full grid grid-cols-2 gap-2 mt-5">
-            <!--BAR CHART-->
-            <div class=" m-5 w-full h-72 ">
-                <canvas wire:ignore id="myChart" class=" min-w-full  min-h-full"></canvas>
-            </div>
-            <!--LINE CHART-->
-            <div class=" m-5 w-full h-72 ">
-                <canvas wire:ignore id="myChart2" class=" w-full h-full"></canvas>
-            </div>
-            <!--LINE CHART-->
-            <div class=" m-5 w-full h-72 bg-red-600">
-                <canvas wire:ignore id="myChart2" class=" w-full h-full"></canvas>
-            </div>
-            <!--LINE CHART-->
-            <div class=" m-5 w-full h-72 bg-red-600">
-                <canvas wire:ignore id="myChart2" class=" w-full h-full"></canvas>
-            </div>
+<div class=" bg-gray-900 gap-5 flex">
+    @include('layout.AdminSideBar')
 
+    <!-- Modal toggle -->
+    <div wire:ignore id="default-modal" tabindex="-1" aria-hidden="true"
+        class=" hidden overflow-y-auto overflow-x-hidden  fixed z-50 flex justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative p-4 w-full max-w-2xl max-h-full">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <!-- Modal header -->
+                <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                        Terms of Service
+                    </h3>
+                    <button onclick="hidemodal()" type="button"
+                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg
+                 text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                </div>
+                <!-- Modal footer -->
+                <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+                    <button type="button"
+                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">I
+                        accept</button>
+                    <button onclick="DeleteShip()" type="button" id="delete-button"
+                        class="py-2.5 px-5 ms-3 text-sm font-medium text-white bg-red-500 hover:bg-red-600 rounded-lg  ">Delete</button>
+                </div>
+            </div>
         </div>
+        <!--CALENDAR-->
     </div>
+    <div wire:ignore class="w-full text-white font-bold" id='calendar'></div>
 </div>
 
+
+
+<!--DATE FORMAT-->
 <script>
-    const ctx = document.getElementById('myChart');
-    const ctx2 = document.getElementById('myChart2');
-    let data = @json($product);
-    let name = [];
-    let price = [];
-    data.forEach(item => {
-        name.push(item.name);
-    });
-    data.forEach(item => {
-        price.push(item.price);
-    });
-    //console.log(price);
+    function formatDateForDatabase(date) {
+        var year = date.getFullYear();
+        var month = String(date.getMonth() + 1).padStart(2, '0');
+        var day = String(date.getDate()).padStart(2, '0');
+        var hours = String(date.getHours()).padStart(2, '0');
+        var minutes = String(date.getMinutes()).padStart(2, '0');
+        var seconds = String(date.getSeconds()).padStart(2, '0');
+        return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+    }
+</script>
 
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: name, // THE NAME ARRAY
-            datasets: [{
-                label: "Giá",
-                data: price,
-                backgroundColor:  'rgba(255, 99, 132, 0.2)',
-                borderWidth: 1
+<!--HIDE MODAL-->
+<script>
+    function hidemodal() {
+        var modal = document.getElementById('default-modal');
+        modal.classList.add('hidden');
+    }
+</script>
+<!--DELETE SHIP-->
+<script>
+    function DeleteShip(eventId) {
+        Livewire.dispatch('deleteShip', {
+            id: eventId
+        });
+        hidemodal();
+    }
+</script>
+
+
+<!--CALENDAR-->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var event = @json($events);
+        var Aevent;
+        console.log(event);
+        var IsDraging = false;
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            //==========CUSTOM CSS==============
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay'
             },
-            {
-                label: "Giá",
-                data: price,
-                backgroundColor:  'rgba(00, 00, 255, 0.2)',
-                borderWidth: 1
-            }, ]
-        },
-        options: {
-            maintainAspectRatio: false
-        },
+            buttonText: {
+                today: 'Hôm Nay',
+                month: 'Tháng',
+                week: 'Tuần',
+                day: 'Ngày',
+                list: 'Danh Sách'
+            },
+            locale: 'vi',
+            selectable: true,
+            editable: true,
+            events: event,
+
+            //=============EVENT===========
+            //CLICK EVENT
+            eventClick: function(info) {
+                var modal = document.getElementById('default-modal');
+                modal.classList.remove('hidden');
+                Aevent = info.event.id;
+                console.log(Aevent);
+                document.getElementById('delete-button').onclick = function() {
+                    DeleteShip(Aevent);
+                };
+            },
+            //DRAG EVENT
+            eventDrop: function(info) {
+                Livewire.dispatch('UpdateShip', {
+                    id: info.event.id,
+                    start: formatDateForDatabase(info.event.start),
+                    end: formatDateForDatabase(info.event.end)
+                })
+
+            },
+
+        });
+        Livewire.on('UpdateCalendar', () => {
+            event = @json($events);
+            console.log(event);
+            calendar.refetchEvents();
+        })
+        calendar.render();
+       
+
     });
-    var SecondChart = new Chart(ctx2, {
-        type: 'line',
-        data: {
-            labels: name, // THE NAME ARRAY
-            datasets: [{
-                label: "Giá",
-                data: price,
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(255, 159, 64, 0.2)',
-                    'rgba(255, 205, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(201, 203, 207, 0.2)',
-
-                ],
-                borderColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(255, 159, 64)',
-                    'rgb(255, 205, 86)',
-                    'rgb(75, 192, 192)',
-                    'rgb(54, 162, 235)',
-                    'rgb(153, 102, 255)',
-                    'rgb(201, 203, 207)',
-
-                ],
-                borderWidth: 1
-            }, ]
-        },
-
-    });
-    var chartoption = document.getElementById('chartype')
-    chartoption.addEventListener('change', function(){
-        let option = chartoption.options[chartoption.selectedIndex].value;
-        myChart.config.type = option;
-        myChart.update();
-    });
-
-    window.addEventListener('test', event => {
-        let data = event.__livewire.params[0];
-        price =[];
-        // console.log(event.__livewire.params[0].id);
-        console.log(data);
-        myChart.data.labels = [data.name];
-        myChart.data.datasets.data = data.price;
-        myChart.update();
-});
 </script>

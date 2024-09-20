@@ -39,26 +39,26 @@
             <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 text-green-500 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
                 <li>
                     <a href="{{ route('Home') }}"
-                        class="block py-2 px-3 rounded md:bg-transparent  md:p-0 "
+                        class="block py-2 px-3  rounded  md:p-0 hover:text-green-700 transition-all duration-300"
                         aria-current="page">Trang chủ</a>
                 </li>
                 <li>
                     <a href="{{ route('AboutUs') }}"
-                        class="block py-2 px-3  rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0  md:dark:hover:text-blue-500 dark:hover:bg-gray-700 md:dark:hover:bg-transparent ">Giới thiệu</a>
+                        class="block py-2 px-3  rounded  md:p-0 hover:text-green-700 transition-all duration-300">Giới thiệu</a>
                 </li>
                 <li>
                     <a href="{{ route('AllProduct') }}"
-                        class="block py-2 px-3  rounded  md:p-0  md:dark:hover:text-blue-500 dark:hover:bg-gray-700 md:dark:hover:bg-transparent ">Sản phẩm</a>
+                        class="block py-2 px-3  rounded  md:p-0 hover:text-green-700 transition-all duration-300">Sản phẩm</a>
                 </li>
                 <li>
                     <a href="{{ route('Contact') }}"
-                        class="block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 s md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Liên hệ</a>
+                        class="block py-2 px-3  rounded  md:p-0 hover:text-green-700 transition-all duration-300">Liên hệ</a>
                 </li>
                 @auth
                 @if (auth()->user()->role == 'admin')
                 <li>
                     <a href="{{ route('AdminHomePage') }}"
-                        class="block py-2 px-3 text-green-900 rounded md:bg-transparent  md:p-0 "
+                        class=" object-center  w-20 h-10  text-green-900 rounded transition-all hover:text-green-700  duration-300  "
                         aria-current="page">Admin</a>
                 </li>    
                 @endif

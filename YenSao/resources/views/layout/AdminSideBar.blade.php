@@ -19,7 +19,7 @@
             </div>
             <div class= "hover:ml-4 justify-end pr-5 text-white hover:text-purple-500 dark:hover:text-purple-500 w-full bg-[#1E293B] p-3 rounded-full transform ease-in-out duration-300 flex">
                 <a href="{{route('Chart')}}">
-                    <i class="fa-solid fa-chart-simple"></i>
+                    <i class="fa-solid fa-calendar-days"></i>
                 </a>
             </div>
         </div>

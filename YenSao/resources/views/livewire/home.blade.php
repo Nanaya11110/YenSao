@@ -5,9 +5,9 @@
         <h2 class="text-3xl font-bold text-center text-green-900 mb-8">Sản phẩm nổi bật</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             @foreach ($products as $product )
-            <a href="{{route('ProductDetail',['id'=>$product->id])}}" class=" rounded-lg bg-slate-300 hover:-translate-y-2 duration-500 shadow-md overflow-hidden">
+            <a href="{{route('ProductDetail',['id'=>$product->id])}}" class=" rounded-lg bg-gray-300 hover:-translate-y-2 duration-500 shadow-md overflow-hidden">
                 <img src="{{$product->image}}" alt="{{$product->name}}"
-                    class="w-full h-96 object-fill">
+                    class=" w-96 h-96 object-fill">
                 <div class="p-6">
                     <h3 class="text-xl font-bold text-gray-800 mb-2">{{$product->name}}</h3>
                     <p class="text-gray-700 text-base">Khối lượng: {{$product->weight}}ml</p>
